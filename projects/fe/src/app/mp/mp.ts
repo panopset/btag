@@ -20,43 +20,15 @@ export class Mp {
   name = ''
 
   submitTheForm() {
-    this.outputText = 'Loading data... '
-    console.log('initiated submitTheForm...')
-    if (this.name != null) {
-     this.dataService.getData(this.name).subscribe(
-       {
-              next: (resp) => {
-                if (resp.body != null) {
-                 this.outputText = resp.body
-                 this.cdr.detectChanges()
-                }
-              },
-              error: (error) => {
-                console.log(error)
-              }
-            }
-       )
-    }
-  }
-
-
-
-  submitTheForm2() {
-    this.outputText = 'Loading data... '
-    console.log('initiated submitTheForm...')
-    let submittedName = this.name
-    if (this.name != null) {
+   if (this.name != null) {
      this.dataService.getData(this.name).subscribe({
        next: (resp) => {
-         if (resp.body != null) {
-          this.outputText = resp.body
-          this.name = submittedName
-         }
-       },
-       error: (error) => {
-         console.log(error)
+        if (resp.body != null) {
+         this.outputText = resp.body
+         this.cdr.detectChanges()
+        }
        }
      })
-    }
+   }
   }
 }
