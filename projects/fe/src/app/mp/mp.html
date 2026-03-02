@@ -1,8 +1,6 @@
-<form [formGroup]="userForm" (ngSubmit)="submitTheForm()">
   <label for="name">Name:&nbsp;&nbsp;</label>
-  <input id="name" type="text" formControlName="name">
-  <button type="submit">Submit</button>
-</form>
+  <input [(ngModel)]="name" name="name" id="name" type="text" #ctrl="ngModel">
+  <button type="submit" (click)="submitTheForm()">Submit</button>
 
 <h1>Output</h1>
 
@@ -12,3 +10,6 @@
 <div *ngIf="!outputText">
   <p>Ready...</p>
 </div>
+
+
+value: {{ name }}
