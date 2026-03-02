@@ -22,24 +22,13 @@ export class Mp {
   submitTheForm() {
     this.outputText = 'Loading data... '
     console.log('initiated submitTheForm...')
-    let submittedName = this.name
     if (this.name != null) {
-     this.dataService.getData(this.name).pipe(
-       tap(_ => {
-         let reazy = _.body
-         console.log("reazy: " + reazy)
-         if (_.body != null) {
-           this.outputText = _.body
-         }
-       })
-     ).subscribe(
+     this.dataService.getData(this.name).subscribe(
        {
               next: (resp) => {
                 if (resp.body != null) {
-                  this.cdr.detectChanges()
-         console.log("subscribe: " + resp.body)
                  this.outputText = resp.body
-                 this.name = submittedName
+                 this.cdr.detectChanges()
                 }
               },
               error: (error) => {
