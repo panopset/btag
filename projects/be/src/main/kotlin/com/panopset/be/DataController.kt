@@ -16,6 +16,7 @@ class DataController {
         @RequestParam name: String
     ): ResponseEntity<String> {
         val rtn = "Hello $name"
+        println("Data: $rtn")
         return ResponseEntity.ok(JsonHelper<String>().object2json(rtn))
     }
 }
